@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- $Id: header.xml 205 2011-03-05 08:35:06Z paulhoadley $ -->
+
+<resume>
+  <header>
+    <person>
+      <honorific>honorific</honorific>
+      <firstname>firstname</firstname>
+      <othernames>othernames</othernames>
+      <lastname>lastname</lastname>
+    </person>
+
+    <birthdate>
+      <date>
+	<day>day</day>
+	<month>month</month>
+	<year>year</year>
+      </date>
+    </birthdate>
+
+    <birthplace>birthplace</birthplace>
+
+    <contact>
+      <address type="business">
+	<businessname>businessname</businessname>
+	<location>location</location>
+	<street>street</street>
+	<suburb>suburb</suburb>
+	<state>state</state>
+	<postcode>postcode</postcode>
+	<country>country</country>
+      </address>
+
+      <address type="other">
+	<businessname>businessname</businessname>
+	<location>location</location>
+	<street>street</street>
+	<suburb>suburb</suburb>
+	<state>state</state>
+	<postcode>postcode</postcode>
+	<country>country</country>
+      </address>
+
+      <address type="postal">
+	<businessname>businessname</businessname>
+	<location>location</location>
+	<street>street</street>
+	<suburb>suburb</suburb>
+	<state>state</state>
+	<postcode>postcode</postcode>
+	<country>country</country>	
+      </address>
+
+      <address type="residential">
+	<businessname>businessname</businessname>
+	<location>location</location>
+	<street>street</street>
+	<suburb>suburb</suburb>
+	<state>state</state>
+	<postcode>postcode</postcode>
+	<country>country</country>
+      </address>
+
+      <emailaddress>emailaddress</emailaddress>
+      <emailaddress>emailaddress</emailaddress>
+
+      <phone type="business">
+	<prefix>prefix</prefix>
+	<areacode>areacode</areacode>
+	<number>number</number>
+      </phone>
+
+      <phone type="home">
+	<prefix>prefix</prefix>
+	<areacode>areacode</areacode>
+	<number>number</number>	
+      </phone>
+
+      <phone type="mobile">
+	<prefix>prefix</prefix>
+	<areacode>areacode</areacode>
+	<number>number</number>	
+      </phone>
+    </contact>
+
+    <keywords>
+      <keyword>keyword</keyword>
+      <keyword>keyword</keyword>
+      <keyword>keyword</keyword>
+      <keyword>keyword</keyword>
+    </keywords>
+
+    <languages>
+      <language>language</language>
+      <language>language</language>
+      <language>language</language>
+      <language>language</language>
+    </languages>
+
+    <licenses>
+      <license>license</license>
+      <license>license</license>
+      <license>license</license>
+      <license>license</license>
+    </licenses>
+
+    <nationalities>
+      <nationality>nationality</nationality>
+      <nationality>nationality</nationality>
+      <nationality>nationality</nationality>
+      <nationality>nationality</nationality>
+    </nationalities>
+
+    <photograph>photograph</photograph>
+  </header>
+</resume>

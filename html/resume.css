@@ -1,0 +1,268 @@
+# ResXML:  CSS for HTML resume
+#
+# Copyright (C) 2004 Logic Squad
+#
+# $Id: resume.css 205 2011-03-05 08:35:06Z paulhoadley $
+
+body {
+	background-color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: sans-serif;
+}
+
+div.section {
+	margin: 10px;
+	border: 1px solid black;
+	padding: 10px;
+}
+
+div.personal-info {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+table.personal-info td {
+	vertical-align: top;
+}
+
+table.personal-info td p {
+	margin: 0px;
+	border: none;
+	padding: 0px;
+}
+
+#personal-info-attribute {
+	width: 200px;
+}
+
+#personal-info-value {
+	width: auto;
+}
+
+div.institution {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+div.institution h2 {
+}
+
+div.qualifications {
+}
+
+div.scholarships {
+}
+
+div.scholarships h3 {
+}
+
+div.prizes {
+}
+
+div.prizes h3 {
+}
+
+div.memberships {
+}
+
+div.memberships h3 {
+}
+
+div.membership-list {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+div.membership {
+}
+
+div.clearance-list { 
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+div.clearance { 
+}
+
+div.employer {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+div.employer h2 {
+}
+
+div.job {
+}
+
+div.job h3 {
+}
+
+p.job-location {
+	font-style: italic;
+}
+
+div.course {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+p.course-provider {
+}
+
+div.skillarea {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+div.skillarea h2 {
+}
+
+div.skill {
+}
+
+div.skill h3 {
+}
+
+div.description {
+}
+
+div.articles {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+div.articles h2 {
+}
+
+div.chapters {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+div.chapters h2 {
+}
+
+div.books {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+div.books h2 {
+}
+
+div.onlinepubs {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+div.onlinepubs h2 {
+}
+
+div.reviews {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+div.reviews h2 {
+}
+
+div.article {
+}
+
+span.article-title {
+}
+
+span.journal {
+	font-style: italic;
+}
+
+span.journalvolume {
+	font-weight: bold;
+}
+
+span.journalnumber {
+}
+
+div.book {
+}
+
+div.chapter {
+}
+
+span.chapter-in {
+	font-style: italic;
+}
+
+div.onlinepub {
+}
+
+span.sitename {
+	font-style: italic;
+}
+
+div.referee {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+div.copyright {
+	margin: 10px;
+	border: 1px solid black;
+	padding: 10px;
+}
+
+div.copyright h1 {
+}
+
+div.copyright-content {
+	margin: 5px;
+	border: 1px dashed black;
+	padding: 5px;
+}
+
+div.copyrighttext {
+}
+
+div.qualification {
+}
+
+div.qualification h3 {
+}
+
+span.label-qualification-incomplete {
+	font-style: italic;
+}
+
+span.qualification-class {
+	font-style: italic;
+}
+
+span.conferred-date {
+	font-style: italic;
+}
+
+
+
+span.emph {
+	font-style: italic;
+}
+
+span.uri {
+	font-family: monospace;
+}

@@ -1,0 +1,1566 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- An XML application for storing data about a curriculum vitae or
+     resume. -->
+
+<!-- $Id: resume.rng 205 2011-03-05 08:35:06Z paulhoadley $ -->
+
+<!-- Copyright (C) 2003, 2004, 2005 Logic Squad -->
+
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <start>
+    <ref name="resume"/>
+  </start>
+
+  <!-- The root element -->
+  <define name="resume">
+    <element name="resume">
+      <!-- The only required element is a header, and it must be at
+           the top -->
+      <ref name="header"/>
+
+      <!-- The remaining elements are optional, and can be placed in
+           any order -->
+      <interleave>
+	<optional>
+	  <ref name="academic"/>
+	</optional>
+	<optional>
+	  <ref name="employment"/>
+	</optional>
+	<optional>
+	  <ref name="training"/>
+	</optional>
+	<optional>
+	  <ref name="skills"/>
+	</optional>
+	<optional>
+	  <ref name="memberships"/>
+	</optional>
+	<optional>
+	  <ref name="clearances"/>
+	</optional>
+	<optional>
+	  <ref name="publications"/>
+	</optional>
+	<optional>
+	  <ref name="referees"/>
+	</optional>
+	<optional>
+	  <ref name="copyright"/>
+	</optional>
+      </interleave>
+    </element>
+  </define>
+
+
+  <!-- Header -->
+
+  <!-- Ownership and contact information -->
+  <define name="header">
+    <element name="header">
+      <!-- The header requires at least the name of a person -->
+      <ref name="person"/>
+
+      <!-- The remaining elements are optional and can occur in any
+           order -->
+      <interleave>
+	<optional>
+	  <ref name="birthdate"/>
+	</optional>
+	<optional>
+	  <ref name="birthplace"/>
+	</optional>
+	<optional>
+	  <ref name="nationalities"/>
+	</optional>
+	<optional>
+	  <ref name="languages"/>
+	</optional>
+	<optional>
+	  <ref name="contact"/>
+	</optional>
+	<optional>
+	  <ref name="licenses"/>
+	</optional>
+	<optional>
+	  <ref name="photograph"/>
+	</optional>
+	<optional>
+	  <ref name="keywords"/>
+	</optional>
+      </interleave>
+    </element>
+  </define>
+
+  <!-- Birthdate is simply a wrapper for a date.  There may be a
+       better way to do this. -->
+  <define name="birthdate">
+    <element name="birthdate">
+      <ref name="targets"/>
+      <ref name="date"/>
+    </element>
+  </define>
+
+  <!-- Place of birth -->
+  <define name="birthplace">
+    <element name="birthplace">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- Nationalities -->
+  <define name="nationalities">
+    <element name="nationalities">
+      <ref name="targets"/>
+      <oneOrMore>
+	<ref name="nationality"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="nationality">
+    <element name="nationality">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- Languages spoken -->
+  <define name="languages">
+    <element name="languages">
+      <ref name="targets"/>
+      <oneOrMore>
+	<ref name="language"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="language">
+    <element name="language">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- Licenses held -->
+  <define name="licenses">
+    <element name="licenses">
+      <ref name="targets"/>
+      <oneOrMore>
+	<ref name="license"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="license">
+    <element name="license">
+      <ref name="targets"/>
+      <ref name="attlist.license"/>
+      <text/>
+    </element>
+  </define>
+
+  <define name="attlist.license" combine="interleave">
+    <optional>
+      <attribute name="issuer">
+	<text/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="type">
+	<text/>
+      </attribute>
+    </optional>
+  </define>
+
+  <!-- Reference to a photograph -->
+  <define name="photograph">
+    <element name="photograph">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- Contact details for a person -->
+  <define name="contact">
+    <element name="contact">
+      <ref name="targets"/>
+      <interleave>
+	<zeroOrMore>
+	  <ref name="address"/>
+	</zeroOrMore>
+	<zeroOrMore>
+	  <ref name="emailaddress"/>
+	</zeroOrMore>
+	<zeroOrMore>
+	  <ref name="phone"/>
+	</zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+
+  <!-- An email address -->
+  <define name="emailaddress">
+    <element name="emailaddress">
+      <ref name="targets"/>
+      <ref name="attlist.emailaddress"/>
+      <text/>
+    </element>
+  </define>
+  <!-- FIXME: what attributes do we want here? -->
+  <define name="attlist.emailaddress" combine="interleave">
+    <empty/>
+  </define>
+
+
+  <!-- Academic -->
+
+  <!-- This section is to describe academic achievements.  The
+       currently favoured approach is to list achievements in this
+       section by institution.  There is certainly more than one way
+       to do it.  For example, listing by level (secondary, tertiary)
+       and then by institution, or listing by qualification, and have
+       each institution a field under qualification.  (The former
+       example doesn't add much very useful, and the latter would
+       probably result in a wider tree than the favoured approach.)
+       -->
+  <define name="academic">
+    <element name="academic">
+      <ref name="targets"/>
+      <oneOrMore>
+        <ref name="institution"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <!-- A particular institution where an academic qualification (or
+       some other object) was obtained -->
+  <define name="institution">
+    <element name="institution">
+      <ref name="targets"/>
+
+      <!-- The only required field should be name, since we want to
+           use 'institution' in other contexts as well, e.g. under
+           'report' -->
+      <ref name="name"/>
+
+      <ref name="attlist.institution"/>
+
+      <optional>
+	<ref name="location"/>
+      </optional>
+
+      <!-- Within each institution, a number of academic 'objects' can
+           be obtained.  An institution is not really limited to, say,
+           Universities or Schools.  If, for example, a scholarship
+           was obtained from some organisation external to the place
+           of academic work, this should be marked up as an
+           institution.  The _word_ institution should probably not be
+           rendered.  For example, a _company_ offering a scholarship
+           could be listed as the 'institution' here.  Note that an
+           academic 'object' cannot be included _outside_ an
+           institution.  A prize or membership, say, not related to a
+           specific qualification is still marked up in the context of
+           the institution awarding the object. -->
+      <zeroOrMore>
+	<choice>
+	  <ref name="qualification"/>
+	  <ref name="scholarship"/>
+	  <ref name="prize"/>
+	  <ref name="membership"/>
+	</choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <!-- FIXME: I'm not sure that there are a sufficient number of
+       choices here.  Memberships to professional colleges, for
+       example, probably need their own attribute value.
+       'postgraduate'?  'professional'? -->
+  <define name="attlist.institution" combine="interleave">
+    <optional>
+      <attribute name="level">
+	<choice>
+	  <value>secondary</value>
+	  <value>tertiary</value>
+	  <value>professional</value>
+	</choice>
+      </attribute>
+    </optional>
+  </define>
+
+  <!-- An academic qualification -->
+  <define name="qualification">
+    <element name="qualification">
+      <ref name="targets"/>
+      <ref name="attlist.qualification"/>
+
+      <!-- The full title of the qualification -->
+      <ref name="title"/>
+      <optional>
+	<!-- An abbreviated title for the qualification.  This element
+	     would be suitable, for example, for the post-nominal
+	     initials of a degree.  For example, if the 'title'
+	     element contained 'Bachelor of Arts' the 'abbrevtitle'
+	     element might contain 'B.A.'. -->
+	<ref name="abbrevtitle"/>
+      </optional>
+      <optional>
+	<!-- Class of award -->
+	<ref name="class"/>
+      </optional>
+      <optional>
+	<!-- Start and finish dates for the qualification -->
+        <ref name="start"/>
+        <ref name="finish"/>
+      </optional>
+      <optional>
+	<!-- Date of conferral of the qualification -->
+        <ref name="conferred"/>
+      </optional>
+      <zeroOrMore>
+	<!-- Any number of major subject areas -->
+        <ref name="major"/>
+      </zeroOrMore>
+      <zeroOrMore>
+	<!-- Any number of minor subject areas -->
+        <ref name="minor"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <!-- Specific subjects taken - useful for, e.g., final year
+             secondary qualifications. -->
+        <ref name="subject"/>
+      </zeroOrMore>
+      <optional>
+	<!-- A project submitted towards the qualification -->
+	<ref name="project"/>
+      </optional>
+      <optional>
+	<!-- A thesis submitted towards the qualification -->
+	<ref name="thesis"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+	  <!-- A scholarship awarded within the context of this
+	       qualification -->
+          <ref name="scholarship"/>
+	  <!-- A prize awarded within the context of this
+	       qualification -->
+          <ref name="prize"/>
+	  <!-- A membership awarded within the context of this
+	       qualification -->
+          <ref name="membership"/>
+        </choice>
+      </zeroOrMore>
+      <zeroOrMore>
+        <!-- Free-text additional information -->
+        <ref name="description"/>
+      </zeroOrMore>
+      <zeroOrMore>
+	<!-- Free-text comments related to this qualification -->
+        <ref name="comment"/>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <!-- Attributes for a qualification -->
+  <define name="attlist.qualification" combine="interleave">
+    <interleave>
+      <optional>
+	<attribute name="level">
+	  <choice>
+	    <value>primary</value>
+	    <value>secondary</value>
+	    <value>tertiary</value>
+	    <value>post-tertiary</value>
+	    <value>professional</value>
+	  </choice>
+	</attribute>
+      </optional>
+      <optional>
+	<attribute name="type">
+	  <choice>
+	    <value>certificate</value>
+	    <value>diploma</value>
+	    <value>graduate-diploma</value>
+	    <value>degree</value>
+	  </choice>
+	</attribute>
+      </optional>
+
+      <!-- This is the only non-optional attribute: the completion
+           status of the award must be specified.  This is useful
+           mostly so that partially completed awards can be included,
+           though would generally not be processed through to the
+           rendering stage. -->
+      <attribute name="status">
+	<choice>
+	  <value>complete</value>
+	  <value>incomplete</value>
+	</choice>
+      </attribute>
+    </interleave>
+  </define>
+
+  <!-- Date of conferral of an award -->
+  <define name="conferred">
+    <element name="conferred">
+      <ref name="targets"/>
+      <ref name="date"/>
+    </element>
+  </define>
+
+  <!-- A generic name -->
+  <define name="name">
+    <element name="name">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+  <!-- An abbreviated title for an award -->
+  <define name="abbrevtitle">
+    <element name="abbrevtitle">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+  <!-- Class or sub-type of award, or level of achievement -->
+  <define name="class">
+    <element name="class">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+  <!-- A major subject area -->
+  <define name="major">
+    <element name="major">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+  <!-- A minor subject area -->
+  <define name="minor">
+    <element name="minor">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+  <!-- A specific subject taken -->
+  <define name="subject">
+    <element name="subject">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+  <!-- A project submitted towards a qualification -->
+  <define name="project">
+    <element name="project">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+  <!-- A thesis submitted towards a qualification -->
+  <define name="thesis">
+    <element name="thesis">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+  <!-- A scholarship -->
+  <define name="scholarship">
+    <element name="scholarship">
+      <ref name="targets"/>
+      <interleave>
+	<ref name="title"/>
+	<optional>
+	  <ref name="date"/>
+	</optional>
+      </interleave>
+    </element>
+  </define>
+
+  <!-- A prize -->
+  <define name="prize">
+    <element name="prize">
+      <ref name="targets"/>
+      <interleave>
+	<ref name="title"/>
+	<optional>
+	  <ref name="date"/>
+	</optional>
+      </interleave>
+    </element>
+  </define>
+
+  <!-- Memberships of an academic kind -->
+  <define name="membership">
+    <element name="membership">
+      <ref name="targets"/>
+      <ref name="attlist.membership"/>
+      <interleave>
+	<ref name="title"/>
+	<optional>
+	  <ref name="abbrevtitle"/>
+	</optional>
+
+	<!-- An optional 'body'.  This information could be
+	     incorporated into the 'title', but it might be more
+	     appropriate here, especially if there are multiple
+	     separate memberships of the same body. -->
+	<optional>
+	  <ref name="body"/>
+	</optional>
+
+	<!-- A membership can include an optional date (presumably of
+	     conferral) or a date range of validity of the
+	     membership. -->
+	<optional>
+	  <choice>
+	    <group>
+	      <ref name="start"/>
+	      <optional>
+		<ref name="finish"/>
+	      </optional>
+	    </group>
+	    <ref name="date"/>
+	  </choice>
+	</optional>
+
+	<!-- Free-text comments on this membership -->
+	<zeroOrMore>
+	  <ref name="comment"/>
+	</zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+
+  <define name="attlist.membership" combine="interleave">
+    <optional>
+      <!-- FIXME: The enumeration of types here is almost certainly
+           not complete. -->
+      <attribute name="type">
+	<choice>
+	  <value>institution</value>
+	  <value>organisation</value>
+	  <value>college</value>
+	  <value>faculty</value>
+	  <value>department</value>
+	  <value>committee</value>
+	  <value>board</value>
+	  <value>council</value>
+	</choice>
+      </attribute>
+    </optional>
+  </define>
+
+  <!-- A body of some kind conferring a membership. -->
+  <define name="body">
+    <element name="body">
+      <text/>
+    </element>
+  </define>
+
+  <!-- Employment -->
+
+  <!-- This section documents previous work experience.  The structure
+       is somewhat analogous to the 'academic' section above:
+       employment history is documented with respect to a series of
+       employers.  Within each employer, different jobs can be
+       specified.  Probably the only situation where this _may_ render
+       suboptimally is where jobs at one employer are interleaved
+       chronologically with jobs with a different employer.  -->
+
+  <define name="employment">
+    <element name="employment">
+      <ref name="targets"/>
+      <oneOrMore>
+        <ref name="employer"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <!-- A particular employer -->
+  <define name="employer">
+    <element name="employer">
+      <ref name="targets"/>
+      <ref name="attlist.employer"/>
+      <ref name="name"/>
+      <oneOrMore>
+        <ref name="job"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <!-- Classification of the employer -->
+  <define name="attlist.employer" combine="interleave">
+    <optional>
+      <!-- FIXME: Almost certainly needs more types -->
+      <attribute name="type">
+	<choice>
+	  <value>company</value>
+	  <value>institution</value>
+	  <value>organisation</value>
+	  <value>individual</value>
+	</choice>
+      </attribute>
+    </optional>
+  </define>
+
+  <!-- A specific job -->
+  <define name="job">
+    <element name="job">
+      <ref name="targets"/>
+      <!-- Need at least one detail about the job. -->
+      <oneOrMore>
+        <choice>
+          <ref name="location"/>
+          <ref name="sublocation"/>
+          <ref name="title"/>
+          <ref name="description"/>
+          <ref name="basis"/>
+          <ref name="contactname"/>
+          <ref name="start"/>
+          <ref name="finish"/>
+          <ref name="comment"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <!-- To follow is a first attempt at providing a way to classify
+       exactly _where_ within the employer a job was held.  It is
+       difficult to know how many levels of depth to provide. -->
+
+  <!-- A location could be a particular department -->
+  <define name="location">
+    <element name="location">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- Some subdivision within a department, for example a particular
+       'unit' within a department -->
+  <define name="sublocation">
+    <element name="sublocation">
+      <ref name="targets"/>
+      <!-- Here we choose one or more 'units' or a 'division'.  Seems
+           a little arbitrary -->
+      <!-- FIXME: More work needs to be done here -->
+      <choice>
+        <oneOrMore>
+          <ref name="unit"/>
+        </oneOrMore>
+        <ref name="division"/>
+      </choice>
+    </element>
+  </define>
+
+  <define name="unit">
+    <element name="unit">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <define name="division">
+    <element name="division">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- FIXME: probably should constrain the element content here if
+       possible: full-time, part-time, casual -->
+  <define name="basis">
+    <element name="basis">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- FIXME: The following almost certainly needs to be changed.
+       This could possibly be a fully-fledged 'person' element with
+       proper contact details, or at least the 'contact' element
+       defined elsewhere. -->
+  <define name="contactname">
+    <element name="contactname">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+
+  <!-- Training -->
+
+  <!-- This is a container for any kind of qualification or
+       certification obtained from a non-academic institution.  The
+       element name 'course' is possibly temporary.  There may be a
+       better name for it.  It is not yet clear what attributes will
+       be desirable. -->
+
+  <define name="training">
+    <element name="training">
+      <ref name="targets"/>
+      <oneOrMore>
+	<ref name="course"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="course">
+    <element name="course">
+      <ref name="targets"/>
+      <interleave>
+	<ref name="title"/>
+	<optional>
+	  <ref name="abbrevtitle"/>
+	</optional>
+	<ref name="provider"/>
+	<optional>
+	  <ref name="start"/>
+	  <ref name="finish"/>
+	</optional>
+	<optional>
+	  <ref name="conferred"/>
+	</optional>
+	<optional>
+	  <ref name="description"/>
+	</optional>
+      </interleave>
+    </element>
+  </define>
+
+  <define name="provider">
+    <element name="provider">
+      <ref name="targets"/>
+      <interleave>
+	<ref name="name"/>
+	<optional>
+	  <ref name="location"/>
+	</optional>
+      </interleave>
+    </element>
+  </define>
+
+
+  <!-- Skills -->
+  <!-- FIXME: This looks like it was added in a hurry -->
+  <define name="skills">
+    <element name="skills">
+      <ref name="targets"/>
+      <oneOrMore>
+	<element name="skillarea">
+	  <ref name="targets"/>
+	  <ref name="title"/>
+	  <oneOrMore>
+	    <element name="skill">
+	      <ref name="targets"/>
+	      <ref name="title"/>
+	      <optional>
+		<ref name="description"/>
+	      </optional>
+	    </element>
+	  </oneOrMore>
+	</element>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="description">
+    <element name="description">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+
+  <!-- Memberships -->
+
+  <!-- This is a container for memberships (for example, of colleges,
+       professional associations and the like).  It can occur as a
+       top-level subheading, but also within an institution.  The
+       'membership' element is defined elsewhere in this schema. -->
+  <define name="memberships">
+    <element name="memberships">
+      <ref name="targets"/>
+      <oneOrMore>
+        <ref name="membership"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+
+  <!-- Clearances -->
+
+  <!-- A container for security clearances. -->
+  <define name="clearances">
+    <element name="clearances">
+      <ref name="targets"/>
+      <oneOrMore>
+	<ref name="clearance"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <!-- A security clearance -->
+  <define name="clearance">
+    <element name="clearance">
+      <ref name="targets"/>
+
+      <ref name="title"/>
+      <ref name="authority"/>
+
+      <optional>
+	<ref name="level"/>
+      </optional>
+
+      <!-- Date the clearance was granted -->
+      <ref name="start"/>
+
+      <!-- Optional end date, or date of next review -->
+      <optional>
+	<ref name="finish"/>
+      </optional>
+    </element>
+  </define>
+
+  <!-- Issuing authority -->
+  <define name="authority">
+    <element name="authority">
+      <text/>
+    </element>
+  </define>
+
+  <!-- Clearance level -->
+  <define name="level">
+    <element name="level">
+      <text/>
+    </element>
+  </define>
+
+
+  <!-- Publications -->
+
+  <!-- A top-level section for publications of any kind -->
+  <define name="publications">
+    <element name="publications">
+      <ref name="targets"/>
+      <oneOrMore>
+	<!-- This may not be a sufficient number of types -->
+        <choice>
+          <ref name="article"/>
+          <ref name="chapter"/>
+          <ref name="book"/>
+          <ref name="onlinepub"/>
+          <ref name="review"/>
+	  <ref name="report"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <!-- A printed article, most commonly in a journal -->
+  <define name="article">
+    <element name="article">
+      <ref name="targets"/>
+      <ref name="authorgroup"/>
+      <ref name="title"/>
+      <ref name="date"/>
+      <ref name="journal"/>
+      <optional>
+        <ref name="journalvolume"/>
+      </optional>
+      <optional>
+        <ref name="journalnumber"/>
+      </optional>
+      <optional>
+        <ref name="journalpages"/>
+      </optional>
+    </element>
+  </define>
+
+  <!-- The name of a journal -->
+  <define name="journal">
+    <element name="journal">
+      <text/>
+    </element>
+  </define>
+
+  <!-- The volume number of a journal -->
+  <define name="journalvolume">
+    <element name="journalvolume">
+      <text/>
+    </element>
+  </define>
+
+  <!-- The issue number within a volume of a journal -->
+  <define name="journalnumber">
+    <element name="journalnumber">
+      <text/>
+    </element>
+  </define>
+
+  <!-- A page range within a journal -->
+  <define name="journalpages">
+    <element name="journalpages">
+      <text/>
+    </element>
+  </define>
+
+  <!-- A chapter within a book -->
+  <define name="chapter">
+    <element name="chapter">
+      <ref name="targets"/>
+      <ref name="authorgroup"/>
+      <ref name="title"/>
+      <ref name="date"/>
+      <ref name="book"/>
+    </element>
+  </define>
+
+  <!-- A book -->
+  <define name="book">
+    <element name="book">
+      <ref name="targets"/>
+      <ref name="authorgroup"/>
+      <ref name="title"/>
+      <optional>
+	<ref name="date"/>
+      </optional>
+      <optional>
+        <ref name="edition"/>
+      </optional>
+      <ref name="publisher"/>
+      <optional>
+	<ref name="location"/>
+      </optional>
+      <optional>
+	<element name="isbn">
+	  <text/>
+	</element>
+      </optional>
+    </element>
+  </define>
+
+  <!-- An online publication of any kind -->
+  <define name="onlinepub">
+    <element name="onlinepub">
+      <ref name="targets"/>
+      <!-- The online publication can be given an optional type.
+           There are probably not enough choices here. -->
+      <optional>
+	<attribute name="type">
+	  <choice>
+	    <value>article</value>
+	    <value>editorial</value>
+	    <value>tutorial</value>
+	    <value>opinion</value>
+	    <value>letter</value>
+	  </choice>
+	</attribute>
+      </optional>
+      <ref name="authorgroup"/>
+      <ref name="title"/>
+      <ref name="date"/>
+      <ref name="sitename"/>
+      <ref name="uri"/>
+    </element>
+  </define>
+
+  <!-- The name of a web site -->
+  <define name="sitename">
+    <element name="sitename">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- Wrapper for a group of authors -->
+  <define name="authorgroup">
+    <element name="authorgroup">
+      <!-- FIXME: Is 'choice' really correct here?  Couldn't we have
+           author(s) and editor(s)? -->
+      <choice>
+        <oneOrMore>
+          <ref name="author"/>
+        </oneOrMore>
+	<oneOrMore>
+	  <ref name="editor"/>
+	</oneOrMore>
+      </choice>
+    </element>
+  </define>
+
+  <!-- An individual author -->
+  <define name="author">
+    <element name="author">
+      <ref name="lastname"/>
+      <ref name="initials"/>
+    </element>
+  </define>
+
+  <!-- An individual editor -->
+  <define name="editor">
+    <element name="editor">
+      <ref name="lastname"/>
+      <ref name="initials"/>
+    </element>
+  </define>
+
+  <!-- Initials for a name -->
+  <define name="initials">
+    <element name="initials">
+      <text/>
+    </element>
+  </define>
+
+  <!-- The edition of a published work -->
+  <define name="edition">
+    <element name="edition">
+      <text/>
+    </element>
+  </define>
+
+  <!-- The publisher of a published work -->
+  <define name="publisher">
+    <element name="publisher">
+      <text/>
+    </element>
+  </define>
+
+  <!-- This element is a sub-heading for work done in _reviewing_ a
+       publication.  It's not clear that including this in the
+       higher-level 'publications' wrapper is strictly correct, but it
+       seems like information worth having in a resume, and it would
+       otherwise be somewhat of an orphan.  -->
+  <define name="review">
+    <element name="review">
+      <ref name="targets"/>
+      <!-- There may not be enough choices here. -->
+      <choice>
+        <ref name="article"/>
+        <ref name="book"/>
+        <ref name="chapter"/>
+        <ref name="onlinepub"/>
+      </choice>
+    </element>
+  </define>
+
+  <!-- A report of some kind, e.g. a scientific or technical
+       report -->
+  <define name="report">
+    <element name="report">
+      <ref name="targets"/>
+      <ref name="authorgroup"/>
+      <ref name="title"/>
+      <ref name="date"/>
+      <ref name="institution"/>
+
+      <optional>
+	<ref name="reportType"/>
+      </optional>
+
+      <optional>
+	<ref name="reportNumber"/>
+      </optional>
+    </element>
+  </define>
+
+  <!-- Some arbitrary description of the type of report -->
+  <define name="reportType">
+    <element name="reportType">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- Some arbitrary number associated with the report -->
+  <define name="reportNumber">
+    <element name="reportNumber">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+
+  <!-- Referees -->
+
+  <!-- This section is for personal or professional referees -->
+  <define name="referees">
+    <element name="referees">
+      <ref name="targets"/>
+      <oneOrMore>
+        <ref name="referee"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <!-- An individual referee.  This is an improvement on the original
+       content model ('position' and 'company'), though there might
+       still be a better one.  Now a referee has an _optional_
+       'affiliation' that can be typed by an attribute, and a
+       similarly optional 'position' within whatever that affiliation
+       represents. -->
+  <define name="referee">
+    <element name="referee">
+      <ref name="targets"/>
+      <optional>
+	<attribute name="type">
+	  <choice>
+	    <value>personal</value>
+	    <value>professional</value>
+	  </choice>
+	</attribute>
+      </optional>
+      <ref name="title"/>
+      <ref name="firstname"/>
+      <ref name="lastname"/>
+      <optional>
+        <ref name="position"/>
+      </optional>
+      <optional>
+        <ref name="affiliation"/>
+      </optional>
+      <ref name="contact"/>
+    </element>
+  </define>
+
+  <!-- The (professional) position held by a referee -->
+  <define name="position">
+    <element name="position">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+  <!-- An affiliation held by an individual referee.  This could be
+       used, for example, to denote that the referee works for a
+       particular company. -->
+  <define name="affiliation">
+    <element name="affiliation">
+      <ref name="targets"/>
+      <optional>
+	<attribute name="type">
+	  <choice>
+	    <value>company</value>
+	    <value>institution</value>
+	    <value>organisation</value>
+	  </choice>
+	</attribute>
+      </optional>
+
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+
+  <!-- Copyright -->
+
+  <!-- This section records the copyright information for the
+  information held in the resume -->
+  <define name="copyright">
+    <element name="copyright">
+      <ref name="targets"/>
+      <ref name="copyrightholder"/>
+      <ref name="year"/>
+      <ref name="copyrighttext"/>
+    </element>
+  </define>
+
+  <define name="copyrightholder">
+    <element name="copyrightholder">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <define name="copyrighttext">
+    <element name="copyrighttext">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+
+  <!-- Generic elements -->
+
+  <!-- An address.  I think this captures address markup reasonably
+       well.  An optional 'businessname' followed by multiple
+       'location's to specify, say a department, a building level and
+       so on.  It may not be suitable for locations outside
+       Australia. -->
+  <define name="address">
+    <element name="address">
+      <ref name="targets"/>
+      <optional>
+	<attribute name="type">
+	  <choice>
+	    <value>business</value>
+	    <value>other</value>
+	    <value>postal</value>
+	    <value>residential</value>
+	  </choice>
+	</attribute>
+      </optional>
+
+      <optional>
+        <ref name="businessname"/>
+      </optional>
+
+      <zeroOrMore>
+        <ref name="location"/>
+      </zeroOrMore>
+
+      <zeroOrMore>
+	<ref name="street"/>
+      </zeroOrMore>
+
+      <optional>
+	<ref name="suburb"/>
+      </optional>
+      <optional>
+	<ref name="state"/>
+      </optional>
+      <optional>
+	<ref name="postcode"/>
+      </optional>
+      <optional>
+        <ref name="country"/>
+      </optional>
+    </element>
+  </define>
+
+  <!-- A business or company name for inclusion in an address -->
+  <define name="businessname">
+    <element name="businessname">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- A street name -->
+  <define name="street">
+    <element name="street">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- A suburb or town name -->
+  <define name="suburb">
+    <element name="suburb">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- A state name -->
+  <define name="state">
+    <element name="state">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- A post code -->
+  <define name="postcode">
+    <element name="postcode">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- A country name -->
+  <define name="country">
+    <element name="country">
+      <ref name="targets"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- A date.  The idea here is to be fairly flexible, as this can be
+       used in many different contexts.  So, for example, a year alone
+       is permissible.  This might be a sufficient level of detail to
+       describe the start date, say, of a long-held job.  Note the
+       nesting of the 'optional's, though: a solo year is permissible,
+       a month and year, or all three, but no other (nonsensical)
+       combinations. -->
+  <define name="date">
+    <element name="date">
+      <ref name="targets"/>
+      <optional>
+	<optional>
+	  <ref name="day"/>
+	</optional>
+	<ref name="month"/>
+      </optional>
+      <ref name="year"/>
+    </element>
+  </define>
+
+  <!-- A numerical day-of-month -->
+  <define name="day">
+    <element name="day">
+      <text/>
+    </element>
+  </define>
+
+  <!-- A numerical month-of-year -->
+  <define name="month">
+    <element name="month">
+      <text/>
+    </element>
+  </define>
+
+  <!-- A numerical year -->
+  <define name="year">
+    <element name="year">
+      <text/>
+    </element>
+  </define>
+
+  <!-- A wrapper for a start-date -->
+  <define name="start">
+    <element name="start">
+      <ref name="date"/>
+    </element>
+  </define>
+
+  <!-- A wrapper for a finish-date -->
+  <define name="finish">
+    <element name="finish">
+      <ref name="date"/>
+    </element>
+  </define>
+
+  <!-- A phone number. -->
+  <define name="phone">
+    <element name="phone">
+      <ref name="targets"/>
+      <optional>
+	<attribute name="type">
+	  <choice>
+	    <value>business</value>
+	    <value>home</value>
+	    <value>mobile</value>
+	  </choice>
+	</attribute>
+      </optional>
+
+      <optional>
+	<ref name="prefix"/>
+      </optional>
+
+      <optional>
+	<ref name="areacode"/>
+      </optional>
+
+      <ref name="number"/>
+    </element>
+  </define>
+
+  <!-- An international dialing prefix -->
+  <define name="prefix">
+    <element name="prefix">
+      <text/>
+    </element>
+  </define>
+
+  <!-- A (telephone) area code -->
+  <define name="areacode">
+    <element name="areacode">
+      <text/>
+    </element>
+  </define>
+
+  <!-- An unadorned phone number -->
+  <!-- FIXME: probably should change the name of this element? -->
+  <define name="number">
+    <element name="number">
+      <text/>
+    </element>
+  </define>
+
+  <!-- Information that identifies a particular person -->
+  <define name="person">
+    <element name="person">
+      <ref name="targets"/>
+      <optional>
+	<ref name="honorific"/>
+      </optional>
+
+      <ref name="firstname"/>
+
+      <optional>
+	<ref name="othernames"/>
+      </optional>
+
+      <ref name="lastname"/>
+    </element>
+  </define>
+
+  <!-- A person's honorific title -->
+  <define name="honorific">
+    <element name="honorific">
+      <text/>
+    </element>
+  </define>
+
+  <!-- A person's first name -->
+  <define name="firstname">
+    <element name="firstname">
+      <text/>
+    </element>
+  </define>
+
+  <!-- A person's middle names -->
+  <define name="othernames">
+    <element name="othernames">
+      <text/>
+    </element>
+  </define>
+
+  <!-- A person's last name -->
+  <define name="lastname">
+    <element name="lastname">
+      <text/>
+    </element>
+  </define>
+
+  <!-- A title of any kind -->
+  <define name="title">
+    <element name="title">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+  <!-- A wrapper for free-text keywords -->
+  <define name="keywords">
+    <element name="keywords">
+      <ref name="targets"/>
+      <oneOrMore>
+	<ref name="keyword"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="keyword">
+    <element name="keyword">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+  <!-- A comment.  The expectation would be that comments would
+  probably not be rendered to output. -->
+  <define name="comment">
+    <element name="comment">
+      <ref name="targets"/>
+      <mixed>
+	<zeroOrMore>
+	  <ref name="inlines"/>
+	</zeroOrMore>
+      </mixed>
+    </element>
+  </define>
+
+
+  <!-- Wrapper for inlines -->
+  <define name="inlines">
+    <choice>
+      <ref name="emph"/>
+      <ref name="uri"/>
+    </choice>
+  </define>
+
+  <!-- Markup for emphasis -->
+  <define name="emph">
+    <element name="emph">
+      <text/>
+    </element>
+  </define>
+
+  <!-- Markup for a Uniform Resource Identifier (URI) -->
+  <define name="uri">
+    <element name="uri">
+      <text/>
+    </element>
+  </define>
+
+  <!-- Targets attribute -->
+  <define name="targets">
+    <optional>
+      <attribute name="targets">
+	<text/>
+      </attribute>
+    </optional>
+  </define>
+</grammar>

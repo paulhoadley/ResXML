@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- $Id: targets.xml 205 2011-03-05 08:35:06Z paulhoadley $ -->
+
+<resume>
+  <header>
+    
+  </header>
+
+  <academic>
+    <institution targets="a">
+      
+    </institution>
+
+    <institution targets="b">
+      
+    </institution>
+
+    <institution targets="c">
+      
+    </institution>
+
+    <institution targets="a,b">
+      
+    </institution>
+
+    <institution targets="a,c">
+      
+    </institution>
+
+    <institution targets="b,c">
+      
+    </institution>
+
+    <institution targets="a,b,c">
+      
+    </institution>
+  </academic>
+</resume>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- $Id: dates.xml 205 2011-03-05 08:35:06Z paulhoadley $ -->
+
+<dates>
+  <date>
+    <day>1</day>
+    <month>1</month>
+    <year>2004</year>
+  </date>
+
+  <date>
+    <day>01</day>
+    <month>1</month>
+    <year>2004</year>
+  </date>
+
+  <date>
+    <day>1st</day>
+    <month>1</month>
+    <year>2004</year>
+  </date>
+
+  <date>
+    <day>1</day>
+    <month>01</month>
+    <year>2004</year>
+  </date>
+
+  <date>
+    <day>01</day>
+    <month>01</month>
+    <year>2004</year>
+  </date>
+
+  <date>
+    <day>1st</day>
+    <month>01</month>
+    <year>2004</year>
+  </date>
+
+  <date>
+    <day>1</day>
+    <month>jan</month>
+    <year>2004</year>
+  </date>
+
+  <date>
+    <day>01</day>
+    <month>Jan</month>
+    <year>2004</year>
+  </date>
+
+  <date>
+    <day>1st</day>
+    <month>JAN</month>
+    <year>2004</year>
+  </date>
+
+  <date>
+    <day>1</day>
+    <month>january</month>
+    <year>2004</year>
+  </date>
+
+  <date>
+    <day>01</day>
+    <month>January</month>
+    <year>2004</year>
+  </date>
+
+  <date>
+    <day>1st</day>
+    <month>wuby</month>
+    <year>2004</year>
+  </date>
+</dates>

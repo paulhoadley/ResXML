@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- $Id: john_doe.xml 205 2011-03-05 08:35:06Z paulhoadley $ -->
+
+<resume>
+  <header>
+    <person>
+      <honorific>Mr.</honorific>
+      <firstname>John</firstname>
+      <othernames>Foo</othernames>
+      <lastname>Doe</lastname>
+    </person>
+
+    <birthdate>
+      <date>
+	<day>02</day>
+	<month>06</month>
+	<year>1935</year>
+      </date>
+    </birthdate>
+
+    <birthplace>Adelaide, Australia</birthplace>
+
+    <nationalities>
+      <nationality>Australian</nationality>
+    </nationalities>
+
+    <languages>
+      <language>English</language>
+      <language>German</language>
+    </languages>
+
+    <contact>
+      <address type="postal">
+	<street>P.O. Box 561</street>
+	<suburb>UNLEY</suburb>
+	<state>SA</state>
+	<postcode>5061</postcode>
+	<country>Australia</country>
+      </address>
+
+      <emailaddress>jdoe@example.com</emailaddress>
+      <emailaddress>johnd@example.org</emailaddress>
+
+      <phone type="mobile">
+	<prefix>(+61)</prefix>
+	<areacode></areacode>
+	<number>(0)412 972 235</number>
+      </phone>
+    </contact>
+
+    <licenses>
+      <license issuer="Department of Transport, South Australia"
+	       type="vehicle">
+	Car
+      </license>
+      <license issuer="Department of Transport, South Australia"
+	       type="vehicle">
+	Motorcycle
+      </license>
+    </licenses>
+
+    <keywords>
+      <keyword>John Doe</keyword>
+      <keyword>University of Adelaide</keyword>
+      <keyword>Computing</keyword>
+      <keyword>Mathematics</keyword>
+    </keywords>
+  </header>
+
+
+  <academic>
+    <institution level="tertiary" targets="alpha">
+      <name>University of Adelaide</name>
+      <location>Adelaide, Australia</location>
+
+      <qualification status="complete">
+	<title>Bachelor of Medicine and Bachelor of Surgery</title>
+	<abbrevtitle>M.B., B.S.</abbrevtitle>
+	<conferred>
+	  <date>
+	    <day>12</day>
+	    <month>12</month>
+	    <year>1991</year>
+	  </date>
+	</conferred>
+	
+	<membership type="faculty">
+	  <title>Member of Faculty of Medicine</title>
+	  <date>
+	    <year>1992</year>
+	  </date>
+	</membership>
+
+	<membership type="committee">
+	  <title>Member of Curriculum Committee of Faculty of Medicine</title>
+	  <date>
+	    <year>1992</year>
+	  </date>
+	</membership>
+      </qualification>
+
+      <qualification status="complete">
+	<title>Bachelor of Arts</title>
+	<abbrevtitle>B.A.</abbrevtitle>
+	<conferred>
+	  <date>
+	    <day>12</day>
+	    <month>12</month>
+	    <year>1992</year>
+	  </date>
+	</conferred>
+	<major>Anthropology</major>
+      </qualification>
+
+      <qualification status="complete">
+	<title>Bachelor of Mathematical and Computer Sciences</title>
+	<abbrevtitle>B. Ma. &amp; Comp. Sc.</abbrevtitle>
+	<conferred>
+	  <date>
+	    <day>12</day>
+	    <month>12</month>
+	    <year>2002</year>
+	  </date>
+	</conferred>
+	<major>Pure Mathematics</major>
+	<major>Computer Science</major>
+	<prize>
+	  <title>Dean's Certificate of Merit</title>
+	  <date>
+	    <year>2000</year>
+	  </date>
+	</prize>
+      </qualification>
+
+      <qualification status="complete">
+	<title>Bachelor of Mathematical and Computer Sciences (Honours)</title>
+	<abbrevtitle>B. Ma. &amp; Comp. Sc. (Hons)</abbrevtitle>
+	<class>First Class Honours</class>
+	<conferred>
+	  <date>
+	    <day>17</day>
+	    <month>12</month>
+	    <year>2003</year>
+	  </date>
+	</conferred>
+	<thesis>No two trees are not on fire</thesis>
+	<comment>First Class Honours</comment>
+      </qualification>
+    </institution>
+
+    <institution level="secondary" targets="beta">
+      <name>Foo School</name>
+      <location>Adelaide, Australia</location>
+      <scholarship>
+	<title>Bar Scholarship</title>
+	<date>
+	  <year>1985</year>
+	</date>
+      </scholarship>
+
+      <scholarship>
+	<title>Baz Fund Scholarship</title>
+	<date>
+	  <year>1989</year>
+	</date>
+      </scholarship>
+
+      <prize>
+	<title>H. J. Simpson Memorial Prize (Mathematics)</title>
+	<date>
+	  <year>1988</year>
+	</date>
+      </prize>
+
+      <prize>
+	<title>F. Flintstone Memorial Prize (English)</title>
+	<date>
+	  <year>1989</year>
+	</date>
+      </prize>
+
+      <prize>
+	<title>B. Spears Prize for Music</title>
+	<date>
+	  <year>1989</year>
+	</date>
+      </prize>
+
+      <qualification status="complete">
+	<title>Matriculation</title>
+	<conferred>
+	  <date>
+	    <year>1989</year>
+	  </date>
+	</conferred>
+      </qualification>
+    </institution>
+  </academic>
+  
+
+  <employment>
+    <employer type="organisation">
+      <name>Logic Squad</name>
+      <job>
+	<title>Anthropologist</title>
+	<description>Logic Squad is a consulting group specialising in
+	<emph>single source publishing</emph> using XML
+	technologies.</description>
+      </job>
+    </employer>
+
+    <employer type="company">
+      <name>Adelaide Foobar Alliance</name>
+      <job>
+	<location>The Foobar Centre, North Adelaide</location>
+	<sublocation>
+	  <division>Foo Services</division>
+	</sublocation>
+	<title>Foo Officer</title>
+	<description>I provided most of the daily foo to the bar
+	collection.</description>
+	<contactname>Dr. David Foo</contactname>
+	<basis>Full time</basis>
+	<start>
+	  <date>
+	    <year>1999</year>
+	  </date>
+	</start>
+      </job>
+
+      <job>
+	<location>My Favourite Bank</location>
+	<sublocation>
+	  <unit>Money Counting Unit</unit>
+	</sublocation>
+	<title>Chief Coin Counter</title>
+	<description>I counted the coins.</description>
+	<start>
+	  <date>
+	    <year>1999</year>
+	  </date>
+	</start>
+	<finish>
+	  <date>
+	    <year>2001</year>
+	  </date>
+	</finish>
+	<basis>full-time</basis>
+      </job>
+    </employer>
+  </employment>
+
+  <training>
+    <course>
+      <title>Advanced Foo Training</title>
+      <abbrevtitle>AF Training</abbrevtitle>
+      <provider>
+	<name>Adelaide Foo Alliance</name>
+	<location>Foo Centre</location>
+      </provider>
+      <conferred>
+	<date>
+	  <month>06</month>
+	  <year>2003</year>
+	</date>
+      </conferred>
+    </course>
+  </training>
+
+  <skills>
+    <skillarea>
+      <title>Computing</title>
+      <skill>
+	<title>Programming: Java, C, Perl, Lisp, Scheme</title>
+	<description>I have programmed in Java for several years at
+	both an undergraduate level, and as a part-time programmer for
+	the Department of Computer Science at the University of
+	Adelaide.  I am familiar with Perl, and to a lesser extent
+	Lisp and Scheme.</description>
+      </skill>
+      <skill>
+	<title>Operating systems: Unix (Solaris, BSD), Microsoft
+	Windows</title>
+	<description>I have several years' experience in Unix system
+	administration.  I am familiar with the Solaris and Microsoft
+	Windows systems at a user level.</description>
+      </skill>
+      <skill>
+	<title>Publishing: LaTeX, HTML, XML, XSLT, XSLFO, SGML, OASIS
+	DocBook</title>
+
+	<description>I have been involved in the production of a
+	diverse range of publications using single source publishing
+	techniques for several years.  Initially using OASIS DocBook
+	SGML, I have migrated to DocBook XML as my primary markup
+	language.  Additionally, I have reasonable skills in high
+	quality typesetting using the LaTeX system.</description>
+      </skill>
+    </skillarea>
+  </skills>
+
+  <memberships>
+    <membership type="board">
+      <title>Full Registration</title>
+      <body>Foo Board of South Australia</body>
+      <start>
+	<date>
+	  <month>1</month>
+	  <year>1997</year>
+	</date>
+      </start>
+    </membership>
+
+    <membership type="council">
+      <title>Full Registration</title>
+      <body>General Foo Council (United Kingdom)</body>
+      <start>
+	<date>
+	  <day>31</day>
+	  <month>12</month>
+	  <year>2003</year>
+	</date>
+      </start>
+    </membership>
+  </memberships>
+
+  <clearances>
+    <clearance>
+      <title>Foo Clearance</title>
+      <authority>The Foo Bar Society</authority>
+      <level>Top Secret</level>
+      <start>
+	<date>
+	  <day>26</day>
+	  <month>02</month>
+	  <year>2005</year>
+	</date>
+      </start>
+    </clearance>
+  </clearances>
+
+  <publications>
+    <article>
+      <authorgroup>
+	<author>
+	  <lastname>Roberts</lastname>
+	  <initials>P</initials>
+	</author>
+	<author>
+	  <lastname>Hoadley</lastname>
+	  <initials>PA</initials>
+	</author>
+	<author>
+	  <lastname>Sampson</lastname>
+	  <initials>BG</initials>
+	</author>
+      </authorgroup>
+      <title>Determination of foo interval by sampling bar</title>
+      <date>
+	<year>1997</year>
+      </date>
+      <journal>The American Journal of Foo</journal>
+      <journalvolume>18</journalvolume>
+      <journalnumber>2</journalnumber>
+    </article>
+
+    <chapter>
+      <authorgroup>
+	<author>
+	  <lastname>Hoadley</lastname>
+	  <initials>PA</initials>
+	</author>
+      </authorgroup>
+      <title>Miscellaneous conditions of Foo</title>
+      <date>
+	<year>2000</year>
+      </date>
+      <book>
+	<authorgroup>
+	  <editor>
+	    <lastname>Roberts</lastname>
+	    <initials>P</initials>
+	  </editor>
+	</authorgroup>
+	<title>Small foo disorders</title>
+	<publisher>Edward Arnold</publisher>
+      </book>
+    </chapter>
+
+    <onlinepub>
+      <authorgroup>
+	<author>
+	  <lastname>Hoadley</lastname>
+	  <initials>PA</initials>
+	</author>
+      </authorgroup>
+      <title>Generating MRTG graphs of qmail statistics under FreeBSD</title>
+      <date>
+	<month>12</month>
+	<year>2001</year>
+      </date>
+      <sitename>Daemon News</sitename>
+      <uri>http://ezine.daemonnews.org/200112/mrtg_qmail.html</uri>
+    </onlinepub>
+
+    <onlinepub>
+      <authorgroup>
+	<author>
+	  <lastname>Hoadley</lastname>
+	  <initials>PA</initials>
+	</author>
+      </authorgroup>
+      <title>Ripping audio CDs to the Ogg Vorbis format</title>
+      <date>
+	<month>07</month>
+	<year>2004</year>
+      </date>
+      <sitename>Daemon News</sitename>
+      <uri>http://ezine.daemonnews.org/200407/audio-rip-how-to.html</uri>
+    </onlinepub>
+
+    <review>
+      <book>
+	<authorgroup>
+	  <author>
+	    <lastname>Lehey</lastname>
+	    <initials>G</initials>
+	  </author>
+	</authorgroup>
+	<title>The Complete FreeBSD</title>
+	<date>
+	  <year>2003</year>
+	</date>
+	<edition>4th</edition>
+	<publisher>O'Reilly and Associates</publisher>
+	<isbn>0596005164</isbn>
+      </book>
+    </review>
+
+    <review>
+      <chapter>
+	<authorgroup>
+	  <author>
+	    <lastname>Stallings</lastname>
+	    <initials>W</initials>
+	  </author>
+	</authorgroup>
+	<title>Internetwork Operation</title>
+	<date>
+	  <year>2003</year>
+	</date>
+	<book>
+	  <authorgroup>
+	    <author>
+	      <lastname>Stallings</lastname>
+	      <initials>W</initials>
+	    </author>
+	  </authorgroup>
+	  <title>Data and Computer Communications</title>
+	  <publisher>Prentice Hall</publisher>
+	  <location>New Jersey</location>
+	  <isbn>0131006819</isbn>
+	</book>
+      </chapter>
+    </review>
+  </publications>
+
+  <referees>
+    <referee>
+      <title>Mr.</title>
+      <firstname>Homer</firstname>
+      <lastname>Simpson</lastname>
+      <contact>
+	<address type="business">
+	  <location>Simpson House</location>
+	  <street>314 Evergreen Terrace</street>
+	  <suburb>NORTH ADELAIDE</suburb>
+	  <state>SA</state>
+	  <postcode>5006</postcode>
+	  <country>Australia</country>
+	</address>
+	<phone type="business">
+	  <prefix>(+61)</prefix>
+	  <areacode>(0)8</areacode>
+	  <number>8555 1234</number>
+	</phone>
+      </contact>
+    </referee>
+  </referees>
+
+  <copyright>
+    <copyrightholder>John F. Doe</copyrightholder>
+    <year>2003</year>
+    <copyrighttext>All rights reserved.</copyrighttext>
+  </copyright>
+</resume>
