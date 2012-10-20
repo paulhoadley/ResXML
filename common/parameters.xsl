@@ -2,8 +2,6 @@
 
 <!-- Common parameters -->
 
-<!-- $Id: parameters.xsl,v 1.8 2007-03-19 01:15:52 paulhoadley Exp $ -->
-
 <!-- Copyright (C) 2004 Logic Squad -->
 
 
@@ -16,8 +14,6 @@
 
   <doc:stylesheet>
     <doc:title>Common output parameters</doc:title>
-    <doc:date>$Date: 2007-03-19 01:15:52 $</doc:date>
-    <doc:revision>$Revision: 1.8 $</doc:revision>
 
     <doc:description>Parameters which control the behaviour of the
     output stylesheets.  These parameters are imported by both

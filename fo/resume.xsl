@@ -2,8 +2,6 @@
 
 <!-- Stylesheet for XSLFO output -->
 
-<!-- $Id: resume.xsl 205 2011-03-05 08:35:06Z paulhoadley $ -->
-
 <!-- Copyright (C) 2003, 2004, 2006 Logic Squad -->
 
 

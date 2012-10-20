@@ -2,8 +2,6 @@
 
 <!-- Templates for producing targeted resumes -->
 
-<!-- $Id: targets.xsl,v 1.3 2006-12-01 04:57:46 paulhoadley Exp $ -->
-
 <!-- Copyright (C) 2004, 2006 Logic Squad -->
 
 

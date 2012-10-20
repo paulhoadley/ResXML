@@ -2,8 +2,6 @@
 
 <!-- ResXML: Sample top-level driver for HTML output -->
 
-<!-- $Id: driver-html.xsl 205 2011-03-05 08:35:06Z paulhoadley $ -->
-
 <!-- Copyright (C) 2003, 2004 Logic Squad -->
 
 

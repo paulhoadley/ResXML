@@ -2,15 +2,11 @@
 
 <!-- Common templates -->
 
-<!-- $Id: templates.xsl,v 1.5 2005-01-03 13:58:36 paulhoadley Exp $ -->
-
 <!-- Copyright (C) 2004 Logic Squad -->
-
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 		xmlns:doc="http://logicsquad.net/documentation/0.1"
 		version="1.0">
-
 
   <doc:template>
     <doc:description>Format a
