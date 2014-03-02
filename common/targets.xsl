@@ -36,23 +36,13 @@
 	  </xsl:call-template>
 	</xsl:variable>
 
-	<xsl:choose>
-	  <!-- If the result is non-empty, we have a match and so we
-	       copy this element over and check its children. -->
-	  <xsl:when test="$target-match != ''">
-	    <xsl:copy>
-	      <xsl:apply-templates select="@*|node()"/>
-	    </xsl:copy>
-	  </xsl:when>
-
-	  <!-- Otherwise, we have no match, so we do not copy the
-	       element (or its children), and start examining again at
-	       the element's following-sibling. -->
-	  <xsl:otherwise>
-	    <xsl:message>otherwise</xsl:message>
-	    <xsl:apply-templates select="following-sibling::*"/>
-	  </xsl:otherwise>
-	</xsl:choose>
+	<!-- If the result is non-empty, we have a match and so we
+	     copy this element over and check its children. -->
+	<xsl:if test="$target-match != ''">
+	  <xsl:copy>
+	    <xsl:apply-templates select="@*|node()"/>
+	  </xsl:copy>
+	</xsl:if>
       </xsl:when>
 
       <!-- We have an element with no 'target' attribute, so we copy
