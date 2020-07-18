@@ -532,7 +532,7 @@
     </element>
   </define>
 
-  <!-- Memberships of an academic kind -->
+  <!-- Memberships: academic, sporting, club, volunteering -->
   <define name="membership">
     <element name="membership">
       <ref name="targets"/>
@@ -588,6 +588,9 @@
 	  <value>committee</value>
 	  <value>board</value>
 	  <value>council</value>
+	  <value>sporting</value>
+	  <value>club</value>
+	  <value>volunteering</value>
 	</choice>
       </attribute>
     </optional>

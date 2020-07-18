@@ -21,6 +21,29 @@ need to know what you're doing. If you have the following:
 
 then you will be able to use ResXML to produce a resume.
 
+## Producing a "targeted" resume
+
+ResXML can help you produce multiple different "targeted" resumes from
+a single source. Say you want to produce a "tech" and a "retail"
+resume containing different content.
+
+1. Elements common to all of your targets can be added in the usual
+   way.
+
+2. Annotate any elements that should appear only in one of the targets
+   with the `targets` attribute. e.g., `<employer targets="retail">`.
+
+3. Use the `common/targets.xsl` stylesheet to make an initial pass
+   over your source, supplying it with one or more desired targets
+   e.g.:
+
+   `$ xsltproc --stringparam targets "retail" common/targets.xsl resume.xml > retail.xml`
+
+4. You can add multiple targets (comma separated), and any element
+   matching one or more of the targets will be passed through.
+
+5. Finally, process the intermediate XML in the usual way.
+
 ## History
 
 We originally developed ResXML in about 2003, and it was hosted on
