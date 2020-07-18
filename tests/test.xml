@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<resume>
+  <header>
+    
+  </header>
+
+  <academic>
+    
+
+    <institution targets="b">
+      
+    </institution>
+
+    
+
+    <institution targets="a,b">
+      
+    </institution>
+
+    
+
+    <institution targets="b,c">
+      
+    </institution>
+
+    <institution targets="a,b,c">
+      
+    </institution>
+  </academic>
+</resume>
